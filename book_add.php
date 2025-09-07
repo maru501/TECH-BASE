@@ -5,10 +5,7 @@ if(!isset($_SESSION['user_id'])){
 }
 $user_id=$_SESSION['user_id'];
 
-$dsn = 'mysql:dbname=***;host=localhost';
-$user = '***';
-$password = '***';
-$pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+require_once "db.php";
 
 if(isset($_POST['submit'])){
     $title=$_POST['title'];
@@ -16,8 +13,9 @@ if(isset($_POST['submit'])){
     $cover=$_POST['cover'];
     $memo=$_POST['memo'];
    
-    $sql="INSERT INTO tbbooks (title,author,cover,memo) VALUES (:title,:author,:cover,:memo)";
+    $sql="INSERT INTO tbbooks (user_id,title,author,cover,memo) VALUES (:user_id,:title,:author,:cover,:memo)";
     $stmt=$pdo->prepare($sql);
+    $stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
     $stmt->bindParam(':title',$title,PDO::PARAM_STR);
     $stmt->bindParam(':author',$author,PDO::PARAM_STR); 
     $stmt->bindParam(':cover',$cover,PDO::PARAM_STR);

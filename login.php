@@ -3,10 +3,7 @@
 <?php
 session_start();
 
-$dsn = 'mysql:dbname=***;host=localhost';
-$user = '***';
-$password = '***';
-$pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+require_once "db.php";
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $name=$_POST['name'];

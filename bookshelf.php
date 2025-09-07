@@ -5,11 +5,7 @@ if(!isset($_SESSION['user_id'])){
 }
 $user_id=$_SESSION['user_id'];
 
-$dsn = 'mysql:dbname=***;host=localhost';
-$user = '***';
-$password = '***';
-$pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-
+require_once "db.php";
 $sql="SELECT id,user_id,title,author,memo,cover FROM tbbooks WHERE user_id=:user_id";
 $stmt=$pdo->prepare($sql);
 $stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);

@@ -6,11 +6,7 @@ if(!isset($_SESSION['user_id'])){
 $book_id=$_GET['book_id'];
 $user_id=$_SESSION['user_id'];
 
-$dsn = 'mysql:dbname=***;host=localhost';
-$user = '***';
-$password = '***';
-$pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-
+require_once "db.php";
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $post=$_POST['post'];
 

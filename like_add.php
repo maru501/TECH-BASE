@@ -7,10 +7,7 @@ $user_id=$_SESSION['user_id'];
 $post_id=$_GET['post_id'];
 $book_id=$_GET['book_id'];
 
-$dsn = 'mysql:dbname=***;host=localhost';
-$user = '***';
-$password = '***';
-$pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+require_once "db.php";
 
 $sql="INSERT INTO tblikes (user_id,post_id,date) VALUES (:user_id,:post_id,NOW())";
 $stmt=$pdo->prepare($sql);

@@ -2,11 +2,7 @@
 session_start();
 $user_id=$_SESSION['user_id']??null;
 
-$dsn = 'mysql:dbname=***;host=localhost';
-$user = '***';
-$password = '***';
-$pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-
+require_once "db.php";
 $sql="SELECT id,user_id,book_id,post,date FROM tbposts ORDER BY date DESC";
 $stmt=$pdo->query($sql);
 $posts=$stmt->fetchAll();
